@@ -11,6 +11,8 @@ import AuthLayout from '../layouts/AuthLayout';
 import PrivateRoute from '../provider/PrivateRoute';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Loading from '../pages/Loading';
+import MyProfile from '../components/MyProfile/MyProfile';
 
 const router = createBrowserRouter([
     {
@@ -28,24 +30,47 @@ const router = createBrowserRouter([
             {
                 path: "/card/:id",
                 element: <Cards />,
-                loader: () => fetch("/plants.json")
-             },
-             {
+                loader: () => fetch("/plants.json"),
+                hydrateFallbackElement: <Loading></Loading>
+            },
+            ,
+            {
+                path: "/plants",
+                element: <Cards />,
+                loader: () => fetch("/plants.json"),
+                hydrateFallbackElement: <Loading></Loading>
+            },
+            {
                 path: "/care",
                 element: <PlantCares />,
-                loader: () => fetch("/plantCare.json")
-              },
-              {
-                 path: "/exparts",
-                 element: <GreenExparts />,
-                 loader: () => fetch("/exparts.json")
-              },
-            //   {
-            //     path: "/card-details/:id",
-            //     element: <CardDetails />,
-            //     loader: () => fetch("/plants.json")
-            //  },
-            
+                loader: () => fetch("/plantCare.json"),
+                hydrateFallbackElement: <Loading></Loading>
+            },
+            {
+                path: "/exparts",
+                element: <GreenExparts />,
+                loader: () => fetch("/exparts.json"),
+                hydrateFallbackElement: <Loading></Loading>
+            },
+
+            {
+                path: "/card-details/:id",
+                element:
+                    <PrivateRoute>
+                        <CardDetails />
+                    </PrivateRoute>,
+                loader: () => fetch("/plants.json"),
+                hydrateFallbackElement: <Loading></Loading>
+            },
+            {
+                path: "/my-profile",
+                element: (
+                    <PrivateRoute>
+                        <MyProfile />
+                    </PrivateRoute>
+                ),
+            },
+
         ]
     },
     {
@@ -61,27 +86,11 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
-      },
-    //   {
-    //     // path: "/news-details/:id",
-    //     // element: <PrivateRoute>
-    //     //     <NewsDetails></NewsDetails>
-    //     // </PrivateRoute>,
-    //     loader: ()=> fetch("/news.json"),
-    //     hydrateFallbackElement: <Loading></Loading>
-    //   },
+    },
     {
-        path: "/card-details/:id",
-        element: 
-        <PrivateRoute>
-        <CardDetails />
-        </PrivateRoute>,
-        loader: () => fetch("/plants.json")
-     },
-      {
         path: "/*",
         element: <div>Error</div>,
-      },
+    },
 ]);
 
 export default router;

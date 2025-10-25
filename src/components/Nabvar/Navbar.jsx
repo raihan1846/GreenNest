@@ -1,24 +1,26 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
-    const {user, logOut} = use(AuthContext)
-    const handleLogout = () =>{
-        logOut().then(()=>{
-         alert("You Logout successfully..")
+    const { user, logOut } = use(AuthContext)
+    // console.log(user);
+    const handleLogout = () => {
+        logOut().then(() => {
+            toast.success("You Logout successfully..")
         })
-        .catch((error)=>{
-         console.log(error.message);
-        })
+            .catch((error) => {
+                toast.error("Faild Logout!!")
+            })
     }
     const links = (
         <>
-          <li><a href="/">Home</a></li>
-          <li><a href="/plants">Plants</a></li>
-          <li><a href="/profile">My Profile</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/plants">Plants</a></li>
+            <li><a href="/my-profile">My Profile</a></li>
         </>
-      );
+    );
     return (
         <div className="navbar bg-base-100 shadow-sm mb-20">
             <div className="navbar-start">
@@ -38,9 +40,9 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                {
-                            links
-                        }
+                    {
+                        links
+                    }
                 </ul>
             </div>
             <div className="navbar-end">
@@ -48,19 +50,25 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li>
                             <details>
-                                <summary>M A Raihan</summary>
+                                <summary className="flex items-center gap-2">
+                                    <img
+                                        src={user?.photoURL || "https://i.postimg.cc/3JmM6C0G/default-avatar.png"}
+                                        alt="user-avatar"
+                                        className="w-8 h-8 rounded-full object-cover"
+                                    />
+                                    {user?.displayName || "User"}
+                                </summary>
                                 <ul className="bg-base-100 rounded-t-none p-2">
-                                {
-                                    user ? 
-                                <li><Link className='btn btn-primary px-10' onClick={handleLogout}>Logout</Link></li>
-                                    
-                                    : 
-                                    <li><Link className='btn btn-primary px-10' to="/auth/login">Login</Link></li>
+                                    {
+                                        user ?
+                                            <li><Link className='btn btn-primary px-10' onClick={handleLogout}>Logout</Link></li>
 
-                                }
-                                {/* <ul className="bg-base-100 rounded-t-none p-2">
-                                    <li><a>Log Out</a></li>
-                                </ul> */}
+                                            :
+                                            <> <li><Link className='btn btn-primary px-10 my-1' to="/auth/login">Login</Link></li>
+                                                <li><Link className='btn btn-secondary px-10' to="/auth/register">Registration</Link></li>
+                                            </>
+                                    }
+                                    <ToastContainer></ToastContainer>
                                 </ul>
                             </details>
                         </li>
