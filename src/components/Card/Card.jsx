@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Card = ({item}) => {
+    const {plantId} = item;
     return (
         <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden">
         <figure className="px-4 pt-4">
@@ -33,9 +35,9 @@ const Card = ({item}) => {
                         <span className="ml-2 text-gray-500">{item.rating}</span>
                     </div>
                 </div>
-                <button className="btn btn-success btn-outline transition-transform duration-200 hover:scale-105">
+                <Link to={`/card-details/${plantId}`} className="btn btn-success btn-outline transition-transform duration-200 hover:scale-105">
                     View Details
-                </button>
+                </Link>
             </div>
         </div>
     </div>
