@@ -26,8 +26,6 @@ const Login = () => {
             toast.success("Successfully Loged In!!")
         })
             .catch(error => {
-                // console.log(error.message);
-                // alert(error.message)
                 toast.error("Login Faild!!")
                 setError(error.message)
             })
@@ -51,15 +49,15 @@ const Login = () => {
             return;
         }
         const actionCodeSettings = {
-            url: "https://harmonious-manatee-894262.netlify.app/auth/login",
+            url: "https://harmonious-manatee-894262.netlify.app",
             handleCodeInApp: false,
         };
         sendPasswordResetEmail(auth, email, actionCodeSettings)
             .then(() => {
-                toast.success("📩 Password reset email sent! Check your Gmail inbox.");
+                toast.success("Password reset email sent! Check your Gmail inbox.");
             })
             .catch((err) => {
-                toast.error("❌ " + err.message);
+                toast.error("" + err.message);
             });
         }
 

@@ -15,6 +15,7 @@ const Card = ({item}) => {
         <div className="card-body">
             <div className="flex justify-between items-start">
                 <h3 className="card-title text-green-800">{item.plantName}</h3>
+                <h3 className="card-title text-green-800"><Link to={`/ad-home/${plantId}`}  className='bg-red-200 p-3 rounded-full'>Plants Of The Week</Link></h3>
                 <div className="badge bg-amber-100 text-amber-800 border-0">{item.category}</div>
             </div>
             <p className="text-gray-600 text-sm mt-2">{item.description}</p>

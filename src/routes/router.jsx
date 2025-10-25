@@ -13,6 +13,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Loading from '../pages/Loading';
 import MyProfile from '../components/MyProfile/MyProfile';
+import PlantsOfTheWeek from '../components/PlantsOfTheWeek/PlantsOfTheWeek';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,12 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Home></Home>
+            },
+            {
+                path: "/ad-home/:id",
+                element: <PlantsOfTheWeek></PlantsOfTheWeek>,
+                loader: () => fetch("/plants.json"),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/sliders",
