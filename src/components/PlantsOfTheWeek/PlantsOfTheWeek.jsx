@@ -13,13 +13,7 @@ const PlantsOfTheWeek = () => {
     }
   }, [data, id]);
 
-  if (!plant || !plant.plantName) {
-    return (
-      <div className="py-16 text-center text-gray-600">
-        Loading plant details...
-      </div>
-    );
-  }
+  
 
   return (
     <section className="py-16 bg-white">
