@@ -26,7 +26,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/ad-home/:id",
-                element: <PlantsOfTheWeek></PlantsOfTheWeek>,
+                element: (<PrivateRoute>
+                   <PlantsOfTheWeek></PlantsOfTheWeek>
+                </PrivateRoute>),
                 loader: () => fetch("/plants.json"),
                 hydrateFallbackElement: <Loading></Loading>
             },

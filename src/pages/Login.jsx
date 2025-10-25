@@ -1,65 +1,70 @@
-import React, { use, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router';
-import { AuthContext } from '../provider/AuthProvider';
-import { toast, ToastContainer } from 'react-toastify';
-import { GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase/firebase.config';
-const Login = () => {
-    const [error, setError] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+    import React, { use, useEffect, useState } from 'react';
+    import { Link, useLocation, useNavigate } from 'react-router';
+    import { AuthContext } from '../provider/AuthProvider';
+    import { toast, ToastContainer } from 'react-toastify';
+    import {  sendPasswordResetEmail } from 'firebase/auth';
 
-    const { signIn } = use(AuthContext);
-    const location = useLocation()
-    const navigate = useNavigate()
+    const Login = () => {
+        const [error, setError] = useState("");
+        const [email, setEmail] = useState("");
+        const [password, setPassword] = useState("");
+        const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+        const { signIn,  googleSignIn, auth } = use(AuthContext);
+        const location = useLocation();
+        const navigate = useNavigate();
+        // console.log(location);
 
-        signIn(email, password).then(result => {
-            const user = result.user;
-            navigate(`${location.state ? location.state : "/"}`)
-            toast.success("Successfully Loged In!!")
-        })
-            .catch(error => {
-                toast.error("Login Faild!!")
-                setError(error.message)
+        const handleLogin = (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const email = form.email.value;
+            const password = form.password.value;
+
+            signIn(email, password).then(result => {
+                const user = result.user;
+                navigate(`${location.state ? location.state : "/"}`)
+                toast.success("Successfully Loged In!!")
             })
+                .catch(error => {
+                    toast.error("Login Faild!!")
+                    setError(error.message)
+                })
 
-    }
-    const handleGoogleLogin = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-            .then(result => {
-                toast.success("Google Sign In Successful!");
+        }
+    
+        const handleForgotPassword = () => {
+            if (!email) {
+                toast.warn("Please enter your email first!");
+                return;
+            }
+            const actionCodeSettings = {
+                url: "https://enchanting-klepon-398bce.netlify.app",
+                handleCodeInApp: false,
+            };
+            sendPasswordResetEmail(auth, email, actionCodeSettings)
+                .then(() => {
+                    toast.success("Password reset email sent! Check your Gmail inbox.");
+                })
+                .catch((err) => {
+                    toast.error("" + err.message);
+                });
+        }
+       
+         // Google login
+         const handleGoogleLogin = async () => {
+            try {
+                const result = await googleSignIn();
+                const user = result.user;
+                console.log("Google User:", user);
+                console.log("Provider Data:", user.providerData);
+                toast.success("Google Sign in successfully");
                 navigate(location.state?.from || "/");
-            })
-            .catch(error => {
-                console.log(error.message);
-                toast.error("Google Sign In Failed!");
-            });
-    }
-    const handleForgotPassword = () => {
-        if (!email) {
-            toast.warn("⚠️ Please enter your email first!");
-            return;
-        }
-        const actionCodeSettings = {
-            url: "https://harmonious-manatee-894262.netlify.app",
-            handleCodeInApp: false,
+            } catch (err) {
+                console.error("Google Sign-In Error:", err);
+                toast.error("Google sign in faild " + err.message);
+            }
         };
-        sendPasswordResetEmail(auth, email, actionCodeSettings)
-            .then(() => {
-                toast.success("Password reset email sent! Check your Gmail inbox.");
-            })
-            .catch((err) => {
-                toast.error("" + err.message);
-            });
-        }
 
         return (
             <div className="flex justify-center bg-base-200 min-h-screen items-center">
