@@ -4,11 +4,11 @@
       "plantName": "Snake Plant",
       "category": "Air Purifier",
       "price": 18,
-      "rating": 4.8,
+      "rating": 4,
       "availableStock": 10,
       "careLevel": "Easy",
       "description": "A hardy plant that purifies indoor air and thrives in low light.",
-      "image": "https://i.postimg.cc/example1.png",
+      "image": "https://i.ibb.co.com/G4V7fXY3/image1.jpg",
       "providerName": "UrbanGreen Studio"
     },
     {
@@ -16,11 +16,11 @@
       "plantName": "Fiddle Leaf Fig",
       "category": "Decorative",
       "price": 45,
-      "rating": 4.5,
+      "rating": 2,
       "availableStock": 5,
       "careLevel": "Medium",
       "description": "A popular indoor plant with large, violin-shaped leaves that add a touch of elegance.",
-      "image": "https://i.postimg.cc/example2.png",
+      "image": "https://i.ibb.co.com/Z6n228pk/image4.jpg",
       "providerName": "GreenThumb Co."
     },
     {
@@ -28,11 +28,11 @@
       "plantName": "Peace Lily",
       "category": "Air Purifier",
       "price": 22,
-      "rating": 4.7,
+      "rating": 5,
       "availableStock": 12,
       "careLevel": "Easy",
       "description": "Beautiful white blooms and glossy green leaves. Low-maintenance and purifies air effectively.",
-      "image": "https://i.postimg.cc/example3.png",
+      "image": "https://i.ibb.co.com/8gKxkVGM/image7.jpg",
       "providerName": "Leaf & Petal"
     },
     {
@@ -40,11 +40,11 @@
       "plantName": "ZZ Plant",
       "category": "Low Light",
       "price": 25,
-      "rating": 4.6,
+      "rating": 2,
       "availableStock": 8,
       "careLevel": "Easy",
       "description": "Thrives in low light and drought conditions, making it perfect for beginners.",
-      "image": "https://i.postimg.cc/example4.png",
+      "image": "https://i.ibb.co.com/fztWjr8k/image8.jpg",
       "providerName": "UrbanGreen Studio"
     },
     {
@@ -52,11 +52,11 @@
       "plantName": "Monstera Deliciosa",
       "category": "Decorative",
       "price": 35,
-      "rating": 4.9,
+      "rating": 4,
       "availableStock": 6,
       "careLevel": "Medium",
       "description": "Known for its iconic split leaves, adds a tropical vibe to any indoor space.",
-      "image": "https://i.postimg.cc/example5.png",
+      "image": "https://i.ibb.co.com/MDSrp1xd/butterfly-9067326-1280.png",
       "providerName": "GreenThumb Co."
     },
     {
@@ -64,11 +64,11 @@
       "plantName": "Pothos",
       "category": "Trailing",
       "price": 15,
-      "rating": 4.5,
+      "rating": 5,
       "availableStock": 20,
       "careLevel": "Easy",
       "description": "A versatile trailing plant that grows in low light and requires minimal care.",
-      "image": "https://i.postimg.cc/example6.png",
+      "image": "https://i.ibb.co.com/gL8k8KwM/butterfly-3827374-1280.jpg",
       "providerName": "Leaf & Petal"
     }
   ]

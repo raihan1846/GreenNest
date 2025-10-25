@@ -2,19 +2,19 @@
     {
       "id": 1,
       "title": "Watering Tips",
-      "icon": "💧",
+      "icon": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6",
       "description": "Most indoor plants prefer their soil to stay slightly moist but not soggy. Water only when the top inch of soil feels dry to the touch. Overwatering is a common mistake — always ensure proper drainage."
     },
     {
       "id": 2,
       "title": "Sunlight Tips",
-      "icon": "☀️",
+      "icon": "https://i.ibb.co.com/G4V7fXY3/image1.jpg",
       "description": "Place your plants where they receive bright, indirect sunlight. Avoid keeping them in harsh, direct sun for long hours as it can burn the leaves. Rotate your plants weekly for even light exposure."
     },
     {
       "id": 3,
       "title": "Fertilizing Tips",
-      "icon": "🌱",
+      "icon": "https://i.ibb.co.com/8gKxkVGM/image7.jpg",
       "description": "Feed your indoor plants once every 4–6 weeks during the growing season (spring and summer) using a balanced liquid fertilizer. Reduce feeding during fall and winter when plant growth slows down."
     }
   ]

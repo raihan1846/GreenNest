@@ -51,7 +51,7 @@ const Login = () => {
             return;
         }
         const actionCodeSettings = {
-            url: "https://greennest.web.app/auth/login",
+            url: "https://harmonious-manatee-894262.netlify.app/auth/login",
             handleCodeInApp: false,
         };
         sendPasswordResetEmail(auth, email, actionCodeSettings)
