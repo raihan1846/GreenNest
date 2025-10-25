@@ -8,11 +8,11 @@ const CardDetails = () => {
     const [plants, setPlants] = useState({});
     useEffect(() => {
         const plantsDetails = data.find(plant => plant.plantId == id);
-        console.log(plantsDetails);
+        // console.log(plantsDetails);
         setPlants(plantsDetails)
     }, [data, id])
     return (
-        <div>
+        <div className='flex'>
             <div className="container mx-auto px-4 py-8">
                 <header className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-gray-800 mb-2">{data.plantName}</h1>
@@ -69,9 +69,10 @@ const CardDetails = () => {
                             </div>
                         </div>
                     </div>
+            <BookingForm></BookingForm>
+
                 </div>
             </div>
-            <BookingForm></BookingForm>
         </div>
     );
 };
